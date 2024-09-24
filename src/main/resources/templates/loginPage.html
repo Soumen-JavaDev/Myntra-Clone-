@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    
+    <link rel="stylesheet" th:href="@{/myntra.css}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="icon" type="image/png" href="../static/image/icon.png">
+    
+
+
+    <style>
+        body{
+            /* #desktopHeaderPlaceHolder{height:82px}#mainContent{margin:28px auto 0;max-width:400px;background-color:#fff}.nav{background:linear-gradient(to bottom right,#feedf6,#fcf0e2)} */
+            background-color: #feedf6;
+            font-size: 13px;
+  line-height: 1.42857143;
+  color: #424553;
+        }
+        #main-login-contener{
+            margin: 28px auto 0;
+            max-width: 400px;
+            
+            background-color: #fff;
+            height: 100vh;
+            
+        }
+        .offer-pic{
+                    height: 160px;
+                    width: 100%;
+                    
+                    background: rgb(229, 241, 255);
+        }
+        .login-input{
+            padding: 36px 36px 0;
+            font-size: 13px;
+  line-height: 1.42857143;
+  color: #424553;
+        }
+        .butom{
+           
+            display: block;
+            width: 300px;
+            padding: 6px;
+            border-radius: 10px;
+            background-color: #ff3f6c;
+            color: white;
+            text-transform: uppercase;
+            font-weight: 500;
+            
+        }
+        .input-fill {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            border: 2px solid #c4baba;
+            border-radius: 7px;
+        }
+
+        /* Style for when the input is focused */
+        .input-fill:focus  {
+            border-color: #007bff;
+            outline: none;
+            background-color: #f0f8ff;
+        }
+        .butom2{
+             
+            margin-top: 10px;
+            width: 40%;
+            padding: 6px;
+            border-radius: 10px;
+            background-color: #ff3f6c;
+            color: white;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <header class="countener_heder">
+        <div id="log_countener">
+            <a href="profile.html"><img class="logo" th:src="@{image/OIP.jpg}" alt="logo"></a>
+        </div>
+        <div>
+        <nav class="nav">
+            <a href="#">MEN</a>
+            <a href="#">WOMEN</a>
+            <a href="#">KIDS</a>
+            <a href="#">HOME & LIVING</a>
+            <a href="#">BEAUTY</a>
+            <a href="#">STUDIO <sup >New</sup> </a>
+            
+        </nav>
+        </div>
+        <!-- search bar -->
+        <div id="search_bar">
+            <a href="submit" style="padding:2px; padding-bottom:0px;background-color:  #f5f5f6; height: 30px; border-top-left-radius: 10px;border-end-start-radius: 10px;"> <span style="color: black" class="material-symbols-outlined">
+                search
+                </span></a>
+            <input class="search_box" placeholder="Search for products, brands and more">
+        </div>
+    
+    
+    
+        <div id="acation">
+            <div class="acation_action">
+                <span>
+                    <a href="loginForm" class="logo_acation"><span class="material-symbols-outlined">
+                        person
+                        </span></a>
+                </span>
+                <span>  <a class="text" href="#">Login</a><span>
+            </div>
+            <div class="acation_action">
+                <span><a href="#" class="logo_acation"><span class="material-symbols-outlined">
+                    favorite
+                    </span></a></span>
+                <span><a class="text" href="#">Wishlist</a></span>
+            </div>
+            <div class="acation_action">
+                <span><a href="#"  class="logo_acation"><span class="material-symbols-outlined">
+                    shopping_cart
+                    </span></a></span>
+                <span><a class="text" href="#">Bag</a></span>
+            </div>
+    
+       </div>
+    
+    
+    </header>
+    <main>
+        <div id="main-login-contener">
+            <div>
+                <picture class="offer-pic">
+                    <!-- <img th:src="@{image/loginPage.webp}" class="offer-pic"> -->
+                    <img class="offer-pic" th:src="@{image/loginpage.webp}"/>
+                </picture>
+            </div>
+
+            <div  class="login-input">
+               <div>
+             <h1 style="font-weight: 600;"> Login or Signup</h1>   
+                 
+               </div>
+               &nbsp;&nbsp;
+               <div>
+                   <!-- intput fill -->
+                  <form th:action="@{/loginForm}" th:object="${user}" method="post">
+                  
+                     <input class="input-fill" type="text" th:field="*{email}" placeholder="example@gmail.com" required/><br/><br/>
+                    <input  class="input-fill" type="password" th:field="*{password}" placeholder="Password" required/><br/><br/>
+                   
+                    <div th:if="${errorMsg}"></div>
+                        <h3 style="color:rgb(255, 115, 0);" th:text="${errorMsg}"></h3>
+                    </div>
+
+                    <div> By continuing, I agree to the <a style="color: #ff3f6c;" >Terms of Use</a> & <a style="color: #ff3f6c;"> Privacy Policy</a> </div>
+                    <input class="butom" type="submit" value="Login" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>
+                        <input class="butom2" type="reset" value="Reset All"/>
+                        
+                        <button class="butom2"><a style="text-decoration: none; color:white; margin-top: 10px;" href="RegPage">Register</a></button>
+                    </span>
+                   
+                  </form>
+               </div>
+               &nbsp;&nbsp;&nbsp;
+              
+              
+              
+               <div>
+                <span style="text-align: center; margin-left: 28px;">Have trouble logging in? <a style="color: #ff3f6c;">Get help</a></span> 
+               </div>
+               
+            </div>
+        </div>
+    </main>
+</body>
+</html>
