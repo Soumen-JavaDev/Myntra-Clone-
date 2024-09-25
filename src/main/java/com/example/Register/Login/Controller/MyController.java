@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class MyController {
     @Autowired
    private UserService userService;
+
     @GetMapping("/RegPage")
     public String openRegPage(Model model){
         model.addAttribute("user",new User());
         return "RegisterPage";
     }
+
 
     @PostMapping("/regForm")
     public String submitRegForm(@ModelAttribute("user") User user,Model model){
@@ -48,8 +50,9 @@ public class MyController {
 
         }else {
             model.addAttribute("errorMsg","Email id and password didnt matched");
-            return "LoginPage";
+            return "loginPage";
         }
        
     }
+    
 }

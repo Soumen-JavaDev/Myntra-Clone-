@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/myntra.css}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="icon" type="image/png" href="../static/image/icon.png">
+    <link rel="icon" type="image/png" th:href="@{image/icon.png}">
     
 
 
@@ -115,7 +115,7 @@
                 <span>  <a class="text" href="#">Login</a><span>
             </div>
             <div class="acation_action">
-                <span><a href="#" class="logo_acation"><span class="material-symbols-outlined">
+                <span><a href="regPage" class="logo_acation"><span class="material-symbols-outlined">
                     favorite
                     </span></a></span>
                 <span><a class="text" href="#">Wishlist</a></span>
@@ -142,7 +142,7 @@
 
             <div  class="login-input">
                <div>
-             <h1 style="font-weight: 600;"> Login or Signup</h1>   
+             <h1 style="font-weight: 600;"> Login</h1>   
                  
                </div>
                &nbsp;&nbsp;
@@ -153,17 +153,21 @@
                      <input class="input-fill" type="text" th:field="*{email}" placeholder="example@gmail.com" required/><br/><br/>
                     <input  class="input-fill" type="password" th:field="*{password}" placeholder="Password" required/><br/><br/>
                    
-                    <div th:if="${errorMsg}"></div>
+                    <div th:if="${errorMsg}">
                         <h3 style="color:rgb(255, 115, 0);" th:text="${errorMsg}"></h3>
                     </div>
 
-                    <div> By continuing, I agree to the <a style="color: #ff3f6c;" >Terms of Use</a> & <a style="color: #ff3f6c;"> Privacy Policy</a> </div>
+                    
                     <input class="butom" type="submit" value="Login" />
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <span>
                         <input class="butom2" type="reset" value="Reset All"/>
                         
-                        <button class="butom2"><a style="text-decoration: none; color:white; margin-top: 10px;" href="RegPage">Register</a></button>
+                        <a href="/regPage" class="butom2" style="text-decoration: none; color: white; display: inline-block; padding: 6px; background-color: #ff3f6c; border-radius: 10px; text-transform: uppercase; font-weight: 500;text-align: center; border:2px solid black;">
+                            Register
+                        </a>
+                        
+                   
                     </span>
                    
                   </form>

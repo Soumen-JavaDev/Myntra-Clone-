@@ -11,15 +11,17 @@ import lombok.Setter;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     private int id;
-    @Column
-    private String name;
-    @Column
-    private String email;
-    @Column
-    private String password;
-    @Column(unique = true,nullable = false)
 
+    @Column(nullable = false)
+    private String name;
+
+    @Column(unique = true,nullable = false)
+    private String email;
+
+   
+    private String password;
+
+    @Column(unique = true,nullable = false)
     private String phoneno;
 }
